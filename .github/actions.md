@@ -1,0 +1,19 @@
+name: Add comment on pull request
+on:
+  pull_request:
+    types:
+      - labeled
+jobs:
+  add-comment:
+    if: github.event.label.name == 'release-ready'
+    runs-on: ubuntu-latest
+    permissions:
+      pull_requests: write
+    steps:
+      - name: Add comment
+        uses: peter-evans/create-or-update-comment@5f728c3dae25f329afbe34ee4d08eef25569d79f
+        with:
+          pr_number: ${{ github.event.number }}
+          reactions: eyes, rocket
+          body: |
+            Thank you for your contribution! :sparkles:
