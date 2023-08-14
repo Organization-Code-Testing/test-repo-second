@@ -28,3 +28,4 @@ jobs:
           reactions: eyes, rocket
           body: |
             Thank you for your contribution! :sparkles:
+          labels: ["release-ready"]
