@@ -1,6 +1,7 @@
 name: Add comment on pull request
 on:
   pull_request:
+    # PRがマージされた時点で以下Jobを発火させる
     types: [closed]
 jobs:
   add-label:
@@ -10,7 +11,7 @@ jobs:
       - uses: actions/github-script@v4.0
         with:
           script: |
-            github.issues.addLabels({
+            github.pull_request.addLabels({
                 issue_number: ${{ github.event.pull_request.number }},
                 owner: context.repo.owner,
                 repo: context.repo.repo,
