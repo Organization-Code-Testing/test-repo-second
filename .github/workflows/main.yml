@@ -7,12 +7,12 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      uses: actions/github-script@v4.0
-      with:
-        script: |
-          github.issues.addLabels({
-              labels: ["release-ready"]
-            });
+      - uses: actions/github-script@v4.0
+        with:
+          script: |
+            github.issues.addLabels({
+                labels: ["release-ready"]
+              });
   add-comment:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
