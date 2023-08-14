@@ -3,6 +3,12 @@ on:
   pull_request:
     types: [closed]
 jobs:
+  add-label:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - id: label-the-PR
+        uses: actions/labeler@v4
   add-comment:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
