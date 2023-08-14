@@ -13,7 +13,8 @@ jobs:
         uses: peter-evans/create-or-update-comment@5f728c3dae25f329afbe34ee4d08eef25569d79f
         with:
           issue-number: ${{ github.event.pull_request.number }}
-          tag_name: "release-ready"
           reactions: eyes, rocket
           body: |
             Thank you for your contribution! :sparkles:
+        env:
+          ADD_LABEL: "release-ready"
