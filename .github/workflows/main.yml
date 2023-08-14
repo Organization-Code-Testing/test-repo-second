@@ -8,11 +8,10 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - name: Create Pull Request
+      - name: Add Label for pull request
         uses: peter-evans/create-pull-request@v5
         with:
-          labels: |
-            release-ready
+          labels: ["release-ready"]
   add-comment:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
