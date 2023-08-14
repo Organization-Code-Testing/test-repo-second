@@ -3,6 +3,12 @@ on:
   pull_request:
     types: [closed]
 jobs:
+  update-pr:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    labels: release-ready
   add-comment:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
@@ -14,7 +20,5 @@ jobs:
         with:
           issue-number: ${{ github.event.pull_request.number }}
           reactions: eyes, rocket
-          labels: |
-            release-ready
           body: |
             Thank you for your contribution! :sparkles:
