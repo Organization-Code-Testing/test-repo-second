@@ -3,12 +3,6 @@ on:
   pull_request:
     types: [closed]
 jobs:
-  add-label:
-    if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
-    steps:
-      - id: label-the-PR
-        uses: actions/labeler@v4
   add-comment:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
@@ -20,12 +14,7 @@ jobs:
         with:
           issue-number: ${{ github.event.pull_request.number }}
           reactions: eyes, rocket
+          labels: |
+            release-ready
           body: |
             Thank you for your contribution! :sparkles:
-          script: |
-            github.rest.issues.addLabels({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              labels: ["triage"]
-            })
