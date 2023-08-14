@@ -10,8 +10,8 @@ jobs:
       pull-requests: write
     steps:
       - name: Add label
-      uses: gr2m/create-or-update-pull-request-action@v1
-      labels: release-ready
+        uses: gr2m/create-or-update-pull-request-action@v1
+        labels: release-ready
   add-comment:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
