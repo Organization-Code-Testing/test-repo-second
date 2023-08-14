@@ -8,15 +8,11 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/github-script@v4.0
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
         with:
-          script: |
-            github.pull_request.addLabels({
-                issue_number: ${{ github.event.pull_request.number }},
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                labels: ["release-ready"]
-              });
+          labels: |
+            release-ready
   add-comment:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
