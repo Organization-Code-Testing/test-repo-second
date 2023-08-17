@@ -9,6 +9,7 @@ jobs:
     permissions:
       pull-requests: write
     steps:
+      - uses: actions/checkout@v3
       - name: Add label
         uses: gr2m/create-or-update-pull-request-action@v1
         with:
