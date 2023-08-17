@@ -11,11 +11,11 @@ jobs:
     steps:
       - name: Add label
         uses: gr2m/create-or-update-pull-request-action@v1
-        env:
-          GIT_PR_RELEASE_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
           labels: release-ready
           update-pull-request-title-and-body: false
+        env:
+          GIT_PR_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   add-comment:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
