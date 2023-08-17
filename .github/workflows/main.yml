@@ -15,7 +15,7 @@ jobs:
           labels: release-ready
           update-pull-request-title-and-body: false
         env:
-          GIT_PR_RELEASE_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GIT_PR_RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   add-comment:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
